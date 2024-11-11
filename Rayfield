@@ -2978,6 +2978,20 @@ if useStudio then
 		end,
 	})
 
+	-- Fonction pour détruire un bouton
+	local function DestroyButton(button)
+		-- Assurez-vous que le bouton est un élément valide
+		if button and button.Parent then
+			-- Tween pour faire disparaître le bouton (facultatif)
+			TweenService:Create(button, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1, TextTransparency = 1}):Play()
+
+			-- Attendez que le tween se termine
+			task.wait(0.3)
+
+			-- Détruire le bouton
+			button:Destroy()
+		end
+	end
 
 
 	RayfieldLibrary:Notify({Title = "Rayfield Interface", Content = "Welcome to Rayfield. These - are the brand new notification design for Rayfield, with custom sizing and Rayfield calculated wait times.", Image = 4483362458})
